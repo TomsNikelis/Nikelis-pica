@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class GUI {
@@ -33,9 +34,12 @@ public class GUI {
         return galaPasutijums;
     }
     public GUI() {
+        DefaultListModel DLM = new DefaultListModel();
+        list1.setModel(DLM);
         bezAtlaides.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                DLM.removeAllElements();
                 double cena;
                 if(cenaField.getText().equals("")) {
                     cena = 0;
@@ -44,12 +48,17 @@ public class GUI {
                 }
 
                 String pasutijums = pievienotPasutijumu();
-                pasutijumi.add(pasutijums);
+                pasutijumi.add(pasutijums + " | " + cena + "$");
+
+                for (int i = 0; i<pasutijumi.size(); i++) {
+                    DLM.addElement((i+1) + ". " + pasutijumi.get(i));
+                }
             }
         });
         arAtlaidi.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                DLM.removeAllElements();
                 double cena;
                 if(cenaField.getText().equals("")) {
                     cena = 0;
@@ -59,7 +68,15 @@ public class GUI {
                     cena = cena * 85;
                 }
                 String pasutijums = pievienotPasutijumu();
-                pasutijumi.add(pasutijums);
+
+                DecimalFormat df = new DecimalFormat("#.##");
+                String pilnaCena = df.format(cena);
+
+                pasutijumi.add(pasutijums + " | " + pilnaCena + "$");
+
+                for (int i = 0; i<pasutijumi.size(); i++) {
+                    DLM.addElement((i+1) + ". " + pasutijumi.get(i));
+                }
             }
         });
         nonemt.addActionListener(new ActionListener() {
