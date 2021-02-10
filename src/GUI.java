@@ -22,18 +22,25 @@ public class GUI {
 
 
     private String pievienotPasutijumu() {
-        return null;
+        String pasutijums = pasutijumsField.getText();
+        String vards = vardsField.getText();
+        String numurs = numursField.getText();
+        String adrese = adreseField.getText();
+
+        String galaPasutijums = pasutijums + " | " + vards + " | " + numurs + " | " + adrese + " | ";
+        return galaPasutijums;
     }
     public GUI() {
         bezAtlaides.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                pievienotPasutijumu();
             }
         });
         arAtlaidi.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                pievienotPasutijumu();
             }
         });
         nonemt.addActionListener(new ActionListener() {
