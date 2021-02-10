@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class GUI {
     private JPanel MainPlane;
@@ -19,6 +20,7 @@ public class GUI {
     private JTextField pasutijumaNrField;
     private JButton arAtlaidi;
     private JButton nonemt;
+    private ArrayList<String> pasutijumi = new ArrayList<String>();
 
 
     private String pievienotPasutijumu() {
@@ -34,13 +36,30 @@ public class GUI {
         bezAtlaides.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                pievienotPasutijumu();
+                double cena;
+                if(cenaField.getText().equals("")) {
+                    cena = 0;
+                } else {
+                    cena = Double.parseDouble(cenaField.getText());
+                }
+
+                String pasutijums = pievienotPasutijumu();
+                pasutijumi.add(pasutijums);
             }
         });
         arAtlaidi.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                pievienotPasutijumu();
+                double cena;
+                if(cenaField.getText().equals("")) {
+                    cena = 0;
+                } else {
+                    cena = Double.parseDouble(cenaField.getText());
+                    cena = cena / 100;
+                    cena = cena * 85;
+                }
+                String pasutijums = pievienotPasutijumu();
+                pasutijumi.add(pasutijums);
             }
         });
         nonemt.addActionListener(new ActionListener() {
