@@ -33,6 +33,14 @@ public class GUI {
         String galaPasutijums = pasutijums + " | " + vards + " | " + numurs + " | " + adrese + " | ";
         return galaPasutijums;
     }
+    private void notiritField() {
+        pasutijumsField.setText("");
+        cenaField.setText("");
+        vardsField.setText("");
+        numursField.setText("");
+        adreseField.setText("");
+        pasutijumaNrField.setText("");
+    }
     public GUI() {
         DefaultListModel DLM = new DefaultListModel();
         list1.setModel(DLM);
@@ -53,6 +61,7 @@ public class GUI {
                 for (int i = 0; i<pasutijumi.size(); i++) {
                     DLM.addElement((i+1) + ". " + pasutijumi.get(i));
                 }
+                notiritField();
             }
         });
         arAtlaidi.addActionListener(new ActionListener() {
@@ -77,12 +86,29 @@ public class GUI {
                 for (int i = 0; i<pasutijumi.size(); i++) {
                     DLM.addElement((i+1) + ". " + pasutijumi.get(i));
                 }
+                notiritField();
             }
         });
         nonemt.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                DLM.removeAllElements();
+                int pasutijumaNr;
+                if(pasutijumaNrField.getText().equals("")) {
+                    pasutijumaNr = 0;
+                } else {
+                    pasutijumaNr = Integer.parseInt(pasutijumaNrField.getText())-1;
+                    if(pasutijumaNr+1 > pasutijumi.size() || pasutijumaNr < 0) {
 
+                    } else {
+                        pasutijumi.remove(pasutijumaNr);
+                    }
+                }
+
+                for (int i = 0; i<pasutijumi.size(); i++) {
+                    DLM.addElement((i+1) + ". " + pasutijumi.get(i));
+                }
+                notiritField();
             }
         });
     }
