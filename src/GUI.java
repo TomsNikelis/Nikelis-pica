@@ -1,6 +1,10 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
@@ -22,6 +26,7 @@ public class GUI {
     private JButton arAtlaidi;
     private JButton nonemt;
     private ArrayList<String> pasutijumi = new ArrayList<String>();
+    private File file = new File("vesture.txt");
 
 
     private String pievienotPasutijumu() {
@@ -83,9 +88,25 @@ public class GUI {
 
                 pasutijumi.add(pasutijums + " | " + pilnaCena + "$");
 
-                for (int i = 0; i<pasutijumi.size(); i++) {
-                    DLM.addElement((i+1) + ". " + pasutijumi.get(i));
+
+                try
+                {
+                    FileWriter fileWriter = new FileWriter(file);
+                    BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+                    for (int i = 0; i<pasutijumi.size(); i++) {
+                        DLM.addElement((i+1) + ". " + pasutijumi.get(i));
+                        bufferedWriter.write((i+1) + ". " + pasutijumi.get(i));
+                        bufferedWriter.newLine();
+                    }
+                    bufferedWriter.close();
+
                 }
+                catch(IOException ex) {
+                    System.out.println("Neizdevas uzrakstit uz faila'"+ file + "'");
+                }
+
+
                 notiritField();
             }
         });
