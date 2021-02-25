@@ -1,4 +1,4 @@
-# Nikelis-Pica
+# Nikelis-Pica :pizza: :pizza:
 **Parasta programma, kas izveidota ar GUI swing.**
 **Programmas _task list_**
 - [x] Projekta izveide
