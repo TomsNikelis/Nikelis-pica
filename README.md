@@ -10,4 +10,7 @@
 - [x] Pasutijuma vestures izveide
 - [x] Pasutijuma vestures uzlabosana
 - [x] README pievienosana
-- [ ] Jaunas funkcijas izveide
+- [x] Jaunas funkcijas izveide
+- [x] Saglabat pasutijuma pogas pievienosana
+- [x] Nonemt vecos fileWriter funkcijas un aizstat ar jaunajam
+- [x] Saglabat pasutijuma pogas funkcijas pilnveidosana
