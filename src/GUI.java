@@ -66,19 +66,12 @@ public class GUI {
 
                 try
                 {
-                    FileWriter fileWriter = new FileWriter(file);
-                    BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-
                     for (int i = 0; i<pasutijumi.size(); i++) {
                         DLM.addElement((i+1) + ". " + pasutijumi.get(i));
-                        bufferedWriter.write((i+1) + ". " + pasutijumi.get(i));
-                        bufferedWriter.newLine();
                     }
-                    bufferedWriter.close();
-
                 }
-                catch(IOException ex) {
-                    System.out.println("Neizdevas uzrakstit uz faila'"+ file + "'");
+                catch(Exception error) {
+                    System.out.println("Neizdevas pievienot pasutijumu");
                 }
 
 
@@ -104,24 +97,16 @@ public class GUI {
 
                 pasutijumi.add(pasutijums + " | " + pilnaCena + "$");
 
-
                 try
                 {
-                    FileWriter fileWriter = new FileWriter(file);
-                    BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-
                     for (int i = 0; i<pasutijumi.size(); i++) {
                         DLM.addElement((i+1) + ". " + pasutijumi.get(i));
-                        bufferedWriter.write((i+1) + ". " + pasutijumi.get(i));
-                        bufferedWriter.newLine();
                     }
-                    bufferedWriter.close();
 
                 }
-                catch(IOException ex) {
-                    System.out.println("Neizdevas uzrakstit uz faila'"+ file + "'");
+                catch(Exception error) {
+                    System.out.println("Neizdevs pievienot pasutijumu");
                 }
-
 
                 notiritField();
             }
@@ -151,7 +136,17 @@ public class GUI {
         saglabat.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+                try {
+                    FileWriter fileWriter = new FileWriter(file, true);
+
+                    for(int i = 0; i<DLM.size(); i++) {
+                        fileWriter.write("\n" + DLM.get(i));
+                    }
+                    fileWriter.close();
+
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
             }
         });
     }
