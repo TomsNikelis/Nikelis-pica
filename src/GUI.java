@@ -25,6 +25,7 @@ public class GUI {
     private JTextField pasutijumaNrField;
     private JButton arAtlaidi;
     private JButton nonemt;
+    private JButton saglabat;
     private ArrayList<String> pasutijumi = new ArrayList<String>();
     private File file = new File("vesture.txt");
 
