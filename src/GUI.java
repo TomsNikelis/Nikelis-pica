@@ -148,6 +148,12 @@ public class GUI {
                 notiritField();
             }
         });
+        saglabat.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+            }
+        });
     }
 
     public static void main(String[] args) {
