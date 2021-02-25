@@ -1,4 +1,6 @@
 # Nikelis-Pica :pizza: :pizza:
+<img src="screenshot.png" width="350">
+
 **Parasta programma, kas izveidota ar GUI swing.**
 **Programmas _task list_**
 - [x] Projekta izveide
